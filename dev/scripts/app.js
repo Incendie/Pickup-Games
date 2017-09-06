@@ -1,5 +1,8 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+
 console.log("ewoks");
-class Home extends React.Component {
+class App extends React.Component {
 	render(){
 		return(
 			<div>
