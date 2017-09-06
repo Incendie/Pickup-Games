@@ -2,9 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {
 	BrowserRouter as Router,
-	Route, Link} from 'reac-router-dom'
-	import {ajax} from 'jquery';
-}
+	Route, Link, NavLink} from 'react-router-dom';
+	import { ajax } from 'jquery';
 
 console.log("ewoks");
 class App extends React.Component {
