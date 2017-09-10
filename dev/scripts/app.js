@@ -7,33 +7,9 @@ import {
 
 import firebase from './firebase';
 import Host from './Host';
+import Browse from './Browse';
 
 const dbRef = firebase.database().ref(`/events`);
-
-class Browse extends React.Component {
-	render(){
-		return(
-			<div>
-				<h1>Browse</h1>
-			</div>
-		)
-	}
-}
-
-const Form = (props) => {
-	console.log(props);
-	return(
-		<section className="addEvent">
-			<form onSubmit={props.handleSubmit}>
-				<label htmlFor="eventName">Event Name</label>
-				<input type="text" id="eventName" name="eventName" onChange={props.handleChange} value={props.eventName}/>
-				<label htmlFor="eventAddy">Address</label>
-				<input type="text" id="eventAddy" name="eventAddy" onChange={props.handleChange} value={props.eventAddy}/>
-				<button type="submit">Host</button>
-			</form>
-		</section>
-	)
-}
 
 class App extends React.Component {
 	constructor() {
@@ -41,9 +17,11 @@ class App extends React.Component {
 		this.state={
 			eventName: "",
 			eventAddy: "",
+			events: [],
 		};
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleChange = this.handleChange.bind(this);
+		this.removeEvent = this.removeEvent.bind(this);
 	}
 
 	handleSubmit(e){
@@ -54,11 +32,43 @@ class App extends React.Component {
 			eventAddy: this.state.eventAddy,
 		}
 		dbRef.push(newEvent);
+
+		this.state={
+			eventName: "",
+			eventAddy: "",
+		};
 	}
 
 	handleChange(e){
 		this.setState({
 			[e.target.name]: e.target.value,
+		});
+	}
+
+	removeEvent(i){
+		const eventRef = firebase.database().ref(`/events/${i}`)
+		eventRef.remove();
+	}
+
+	joinEvent(i) {
+		const eventRef = firebase.database().ref(`/events/${i}`)
+		//code for joining event by adding username
+	}
+
+	componentDidMount() {
+		dbRef.on("value", (data) => {
+			const gamesArray = [];
+			const items = data.val();
+
+			for (let key in items){
+				const newItem = items[key];
+				newItem.id = key;
+				gamesArray.push(newItem);
+			}
+
+			this.setState({
+				events: gamesArray,
+			})
 		});
 	}
 
@@ -68,14 +78,19 @@ class App extends React.Component {
 				<div>
 					<Link to="/host"><button>Host an Event</button></Link>
 					<Link to="/browse"><button>Browse Events</button></Link>
-					<Route path="/host" render={(props)=> (
+					<Route path="/host" render={() => (
 						<Host 
 							handleSubmit={this.handleSubmit} 
 							handleChange={this.handleChange}
 							state={this.state}/>
 						)}>
 					</Route>
-					<Route path="/browse" component={Browse}></Route>
+					<Route path="/browse" render={() => (
+						<Browse 
+							state={this.state} 
+							removeEvent={this.removeEvent}
+						/>)}>
+					</Route>
 				</div>
 			</Router>
 		)
