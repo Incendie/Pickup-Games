@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import {
 	BrowserRouter as Router,
 	Route, Link, NavLink} from 'react-router-dom';
-	import { ajax } from 'jquery';
+import { ajax } from 'jquery';
+import { Map, Marker, Popup, TileLayer } from 'react-leaflet';	
 
 import firebase from './firebase';
 import Host from './Host';

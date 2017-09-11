@@ -3,10 +3,13 @@ import React from 'react';
 import EventMap from './EventMap.js';
 
 const Browse = (props) => {
+	
 	return(
 		<div>
 			<h1>Browse</h1>
-			<EventMap />
+			<div id="map">
+				<EventMap />
+			</div>
 			<ul>
 				{props.state.events.map((event) => {
 					return(
