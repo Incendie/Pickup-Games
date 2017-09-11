@@ -8,10 +8,14 @@ const Browse = (props) => {
 		<div>
 			<h1>Browse</h1>
 			<div id="map">
-				<EventMap />
+				<EventMap 
+					markers={props.markers}
+					events={props.events}
+					removeEvent={props.removeEvent}
+				/>
 			</div>
 			<ul>
-				{props.state.events.map((event) => {
+				{props.events.map((event) => {
 					return(
 						<li key={event.id}>
 							<h2>{event.eventName}</h2>

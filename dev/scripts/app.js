@@ -6,7 +6,7 @@ import {
 import { ajax } from 'jquery';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';	
 
-import firebase from './firebase';
+import firebase, {auth, provider} from './firebase';
 import Host from './Host';
 import Browse from './Browse';
 
@@ -19,31 +19,71 @@ class App extends React.Component {
 			eventName: "",
 			eventAddy: "",
 			events: [],
+			lat: 0,
+			lng: 0,
+			markers: [],
+			user: null,
 		};
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 		this.removeEvent = this.removeEvent.bind(this);
 	}
+	
+	login() {
+		auth.signInWithPopup(provider)
+			.then((res)=>{
+				this.setState({
+					user: res.user,
+				});
+			})
+	}
+
+	logout() {
+		auth.signOut()
+			.then(()=>{
+				this.setState({
+					user: null,
+				});
+			});
+	}
 
 	handleSubmit(e){
 		e.preventDefault();
 
-		const newEvent = {
-			eventName: this.state.eventName,
-			eventAddy: this.state.eventAddy,
-		}
-		dbRef.push(newEvent);
+		ajax({
+			url: `https://maps.googleapis.com/maps/api/geocode/json`,
+			data: {
+				key: `AIzaSyCwGfv4png_UUby-c5yuyRrMYv4ipsCNVU`,
+				address: this.state.eventAddy
+			}
+		}).then((res)=> {
+			let address = res.results[0];
+			const newEvent = {
+				eventName: this.state.eventName,
+				eventAddy: address.formatted_address,
+				marker: {
+					lat: address.geometry.location.lat,
+					lng: address.geometry.location.lng,
+				}
+			}
 
-		this.state={
-			eventName: "",
-			eventAddy: "",
-		};
+			dbRef.push(newEvent);
+			let marker = {
+				lat: address.geometry.location.lat, 
+				lng: address.geometry.location.lng,
+			}
+
+			this.state = {
+				eventName: "",
+				eventAddy: "",
+			};	
+		});
 	}
 
 	handleChange(e){
 		this.setState({
 			[e.target.name]: e.target.value,
-		});
+		}); 
 	}
 
 	removeEvent(i){
@@ -57,9 +97,16 @@ class App extends React.Component {
 	}
 
 	componentDidMount() {
+		auth.onAuthStateChanged((user) => {
+		    if (user) {
+		      this.setState({ user });
+		    } 
+	  	});
+	  	
 		dbRef.on("value", (data) => {
 			const gamesArray = [];
 			const items = data.val();
+			const markersArray = [];
 
 			for (let key in items){
 				const newItem = items[key];
@@ -77,19 +124,27 @@ class App extends React.Component {
 		return(
 			<Router>
 				<div>
+					{this.state.user ? 
+			        	<button onClick={this.logout}>Logout</button>
+		        		:
+			        	<button onClick={this.login}>Login</button>
+			        }
 					<Link to="/host"><button>Host an Event</button></Link>
 					<Link to="/browse"><button>Browse Events</button></Link>
 					<Route path="/host" render={() => (
 						<Host 
 							handleSubmit={this.handleSubmit} 
 							handleChange={this.handleChange}
-							state={this.state}/>
-						)}>
+							state={this.state}
+						/>)}>
 					</Route>
 					<Route path="/browse" render={() => (
 						<Browse 
-							state={this.state} 
 							removeEvent={this.removeEvent}
+							lat={this.state.lat}
+							lng={this.state.lng}
+							events={this.state.events}
+							markers={this.state.markers}
 						/>)}>
 					</Route>
 				</div>

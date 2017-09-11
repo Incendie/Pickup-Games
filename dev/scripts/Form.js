@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Form = (props) => {
-	console.log(props);
 	return(
 		<section className="addEvent">
 			<form onSubmit={props.handleSubmit}>
@@ -9,6 +8,8 @@ const Form = (props) => {
 				<input type="text" id="eventName" name="eventName" onChange={props.handleChange} value={props.state.eventName}/>
 				<label htmlFor="eventAddy">Address</label>
 				<input type="text" id="eventAddy" name="eventAddy" onChange={props.handleChange} value={props.state.eventAddy}/>
+				<input type="radio" id="eventSport"/>
+				<input type="radio" id="eventGaming"/>
 				<button>Host</button>
 			</form>
 		</section>
