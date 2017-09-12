@@ -23,18 +23,21 @@ class App extends React.Component {
 			lng: 0,
 			markers: [],
 			user: null,
+			gameName: "",
+			eventType: "",
 		};
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 		this.removeEvent = this.removeEvent.bind(this);
+		this.login = this.login.bind(this);
+		this.logout = this.logout.bind(this); 
 	}
 	
 	login() {
 		auth.signInWithPopup(provider)
 			.then((res)=>{
-				this.setState({
-					user: res.user,
-				});
+				let user = res.user;
+				this.setState({user});
 			})
 	}
 
@@ -64,7 +67,9 @@ class App extends React.Component {
 				marker: {
 					lat: address.geometry.location.lat,
 					lng: address.geometry.location.lng,
-				}
+				},
+				uid: this.state.user.uid,
+
 			}
 
 			dbRef.push(newEvent);
@@ -77,6 +82,12 @@ class App extends React.Component {
 				eventName: "",
 				eventAddy: "",
 			};	
+		});
+	}
+
+	handleEvent(){
+		this.setState({
+			
 		});
 	}
 
@@ -129,6 +140,17 @@ class App extends React.Component {
 		        		:
 			        	<button onClick={this.login}>Login</button>
 			        }
+			        {this.state.user ?
+						<div>
+							<div className='user-profile'>
+								<img src={this.state.user.photoURL} />
+							</div>
+						</div>
+						:
+						<div className='wrapper'>
+							<p>You must be logged in to see the events and submit to it.</p>
+						</div>
+			        }
 					<Link to="/host"><button>Host an Event</button></Link>
 					<Link to="/browse"><button>Browse Events</button></Link>
 					<Route path="/host" render={() => (
@@ -136,6 +158,7 @@ class App extends React.Component {
 							handleSubmit={this.handleSubmit} 
 							handleChange={this.handleChange}
 							state={this.state}
+							eventType={this.state.eventType}
 						/>)}>
 					</Route>
 					<Route path="/browse" render={() => (
@@ -145,6 +168,7 @@ class App extends React.Component {
 							lng={this.state.lng}
 							events={this.state.events}
 							markers={this.state.markers}
+							user={this.state.user}
 						/>)}>
 					</Route>
 				</div>

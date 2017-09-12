@@ -9,6 +9,7 @@ const Host = (props) => {
 				handleSubmit={props.handleSubmit}
 				handleChange={props.handleChange}
 				state={props.state}
+				eventType={props.eventType}
 			/>
 		</div>
 	)

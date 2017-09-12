@@ -12,6 +12,7 @@ const Browse = (props) => {
 					markers={props.markers}
 					events={props.events}
 					removeEvent={props.removeEvent}
+					user={props.user}
 				/>
 			</div>
 			<ul>

@@ -19,8 +19,14 @@ const EventMap = (props) => {
 			        <span>	
 			        	<strong>{event.eventName}</strong>
 			        	<br/>{event.eventAddy}
-		        		<br/><button onClick={ () => props.removeEvent(event.id)}>Remove Event</button>
-						<button onClick={ () => props.joinEvent(event.id)}>Join Event</button>
+		        		<br/>{props.user.uid===event.uid ?
+		        			<div>
+		        				<br/>You are hosting this event		        			
+		        				<button onClick={ () => props.removeEvent(event.id)}>Remove Event</button>
+		        			</div>
+		        			:
+							<button onClick={ () => props.joinEvent(event.id)}>Join Event</button>
+						}
 					</span>
 			      </Popup>
 			    </Marker>	    		
