@@ -1,28 +1,61 @@
 import React from 'react';
+import Autocomplete from 'react-google-autocomplete';
 
 const Form = (props) => {
+	const inputProps = {
+	      value: props.state.eventAddy,
+	      onChange: props.handleAddyChange,
+	    }
 	return(
 		<section className="addEvent">
 			<form onSubmit={props.handleSubmit}>
 				<label htmlFor="eventName">Event Name</label>
-				<input type="text" id="eventName" name="eventName" onChange={props.handleChange} value={props.state.eventName}/>
+				<input type="text" id="eventName" name="eventName" onChange={props.handleChange} value={props.state.eventName} placeholder="Give your event name"/>
 				<label htmlFor="eventAddy">Address</label>
-				<input type="text" id="eventAddy" name="eventAddy" onChange={props.handleChange} value={props.state.eventAddy}/>
-				<input type="radio" id="eventSport" onClick={()=>{props.eventType="sports"}}/>
-				<label htmlFor="eventSport">Sports</label>
-				<input type="radio" id="eventGaming" onClick={()=>{props.eventType="gaming"}}/>
-				<label htmlFor="eventGaming">Gaming</label>
+				<Autocomplete
+				    style={{width: '100%'}}
+				    onPlaceSelected={props.handleAddyChange}
+				    types={['address']}
+				    id="eventAddy" 
+				    name="eventAddy" 
+				    onChange={props.handleChange}
+				    value={props.state.eventAddy}
+				/>
+				
+					<div className="radioContainer">
+						<input type="radio" name="eventType" id="eventSport" onClick={props.handleChange} value="sports"/>
+						<label htmlFor="eventSport">Sports</label>
+						<input type="radio" name="eventType" id="eventGaming" onClick={props.handleChange} value="gaming"/>
+						<label htmlFor="eventGaming">Gaming</label>
+					</div>
 				{props.eventType==="sports" ?
-					<select>
-						<option value="basketball"></option>
-						<option value="baseball"></option>
+					<select onChange={props.handleChange} name="eventGame">
+						<option name="eventGame" value="badminton">Badminton</option>
+						<option name="eventGame" value="baseball">Baseball/Softball</option>
+						<option name="eventGame" value="basketball">Basketball</option>
+						<option name="eventGame" value="bowling">Bowling</option>
+						<option name="eventGame" value="cricket">Cricket</option>
+						<option name="eventGame" value="curling">Curling</option>
+						<option name="eventGame" value="football">Football</option>
+						<option name="eventGame" value="hockey">Hockey</option>
+						<option name="eventGame" value="lacrosse">Lacrosse</option>
+						<option name="eventGame" value="rollerskate">Roller Derby</option>
+						<option name="eventGame" value="rugby">Rugby</option>
+						<option name="eventGame" value="skating">Skating</option>
+						<option name="eventGame" value="soccer">Soccer</option>
+						<option name="eventGame" value="tennis">Tennis</option>
+						<option name="eventGame" value="volleyball">Volleyball</option>
+						<option name="eventGame" value="yoga">Yoga</option>
+						<option name="eventGame" value="other">Other (Details Below)</option>
 					</select>
 					:
-					<div>
+					<div className="gameContainer">
 						<label htmlFor="gameName">Name of Game</label>
-						<input type="text" id="gameName" name="gameName" onChange={props.handleChange} value={props.state.gameName}/>
+						<input type="text" id="gameName" name="eventGame" onChange={props.handleChange} value={props.state.eventGame} placeholder="Name of the Game you're hosting"/>
 					</div>
 				}
+				<label htmlFor="eventDetails">Details</label>
+				<textarea name="eventDetails" id="eventDetails" cols="30" rows="10" onChange={props.handleChange} placeholder="Some details about the event as a whole"></textarea>
 				<button>Host</button>
 			</form>
 		</section>

@@ -10,6 +10,9 @@ const Host = (props) => {
 				handleChange={props.handleChange}
 				state={props.state}
 				eventType={props.eventType}
+				handleEventSport={props.handleEventSport}
+				handleEventGame={props.handleEventGame}
+				handleAddyChange={props.handleAddyChange}
 			/>
 		</div>
 	)

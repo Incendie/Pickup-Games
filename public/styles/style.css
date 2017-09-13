@@ -132,11 +132,141 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
+body {
+  font-size: 14px; }
+
+h1, h2, h3, p {
+  padding: 0;
+  margin: 0; }
+
+h1, h2, h3, label {
+  font-family: "Patua One", cursive; }
+
+p, input, textarea, input::placeholder, textarea::placeholder {
+  font-family: "Open Sans", sans-serif; }
+
+img {
+  width: 100%;
+  display: block; }
+
+a {
+  text-decoration: none; }
+
+li {
+  list-style: none;
+  padding: 0; }
+
+button {
+  background: none;
+  border: none;
+  display: block; }
+
+input, textarea {
+  border-style: none; }
+
+input, label, select, textarea {
+  margin-top: 15px; }
+
+input, textarea, select {
+  padding: 5px; }
+
+input, textarea, select, button {
+  border-radius: 3px; }
+
+header {
+  padding: 20px;
+  background: black;
+  color: white;
+  box-shadow: 0px 0px 8px 2px red; }
+
 .leaflet-container {
   height: 100%;
   width: 100%; }
 
 #map {
   height: 500px;
-  width: 500px;
+  width: 100%;
   margin: 0 auto; }
+
+.user-profile {
+  width: 100px; }
+  .user-profile img {
+    border-radius: 50%; }
+
+aside {
+  background: darkgrey;
+  color: white;
+  min-width: 160px;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0; }
+  aside button {
+    margin: 10px 0;
+    background: orange;
+    padding: 10px; }
+  aside .loginBtn {
+    background: green; }
+  aside .logoutBtn {
+    background: red; }
+  aside p {
+    text-align: center;
+    margin: 10px 0; }
+
+main {
+  background: lightgrey;
+  background-image: url("../../public/assets/sportsballs1.png");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url("../../public/assets/sportsballs1.png");
+  background-size: contain;
+  min-width: 500px;
+  width: 80%;
+  padding: 20px;
+  color: white; }
+
+.appContainer {
+  display: flex;
+  min-height: 800px;
+  flex-direction: row; }
+
+.mapBtn {
+  margin: 5px auto;
+  margin-top: 10px;
+  padding: 5px; }
+
+.redBtn {
+  background: darkred; }
+
+.greenBtn {
+  background: lightgreen; }
+
+form {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column; }
+  form button {
+    background: brown;
+    width: 100px;
+    padding: 10px;
+    margin: 20px auto; }
+
+.radioContainer {
+  padding: 0 calc(100% / 3);
+  margin: 10px; }
+  .radioContainer label {
+    margin-right: 50px;
+    margin-left: 10px; }
+
+.gameContainer {
+  display: flex;
+  justify-content: space-between; }
+  .gameContainer label {
+    margin-right: 20px; }
+  .gameContainer input {
+    flex: 1 0 auto; }
+
+label[for="eventDetails"] {
+  margin-top: 20px; }
+
+#mapCentre {
+  margin-bottom: 20px; }
