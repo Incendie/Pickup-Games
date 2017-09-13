@@ -41,11 +41,11 @@ const EventMap = (props) => {
 		        		<br/>{props.user.uid===event.uid ?
 		        			<div>
 		        				<br/>You are hosting this event		        			
-		        				<br/><button className="redBtn mapBtn" onClick={ () => props.removeEvent(event.id)}>Remove Event</button>
+		        				<br/><button className="mapBtn" onClick={ () => props.removeEvent(event.id)}>Remove Event</button>
 		        			</div>
 		        			:
 		        			<div>
-								<br/><button className="greenBtn mapBtn" onClick={ () => props.joinEvent(event.id)}>Join Event</button>
+								<br/><button className="mapBtn" onClick={ () => props.joinEvent(event.id)}>Join Event</button>
 							</div>
 						}
 					</span>

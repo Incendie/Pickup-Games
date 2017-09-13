@@ -222,3 +222,12 @@ li {
 	display: flex;
 	justify-content: space-around;
 }
+
+footer {
+	height: 100px;
+	background-color: $headerColour;
+}
+
+.footLinks {
+	margin: 0;
+}

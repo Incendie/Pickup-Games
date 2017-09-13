@@ -13,6 +13,7 @@ import Host from './Host';
 import Browse from './Browse';
 import Header from './Header';
 import Main from './Main';
+import Footer from './Footer';
 
 const dbRef = firebase.database().ref(`/events`);
 
@@ -32,7 +33,7 @@ class App extends React.Component {
 			eventDetails: "",
 			position: [],
 			mapCentre: [43.6479204,-79.3974025],
-			eventJoined: 0,
+			eventJoined: 1,
 			eventCap: 0,
 		};
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -242,6 +243,7 @@ class App extends React.Component {
 						</main>
 					</div>
 				</Router>
+				<Footer />
 			</div>
 		)
 	}

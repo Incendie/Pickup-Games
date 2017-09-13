@@ -37,9 +37,8 @@ const Browse = (props) => {
 								{props.user.uid===event.uid ?	
 									<button onClick={ () => props.removeEvent(event.id)}>Remove Event</button>
 									:
-									null
+									<button onClick={ () => props.joinEvent(event.id)}>Join Event</button>
 								}
-								<button onClick={ () => props.joinEvent(event.id)}>Join Event</button>
 							</div>
 						</li>
 					)

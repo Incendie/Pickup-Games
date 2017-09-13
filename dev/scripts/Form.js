@@ -60,7 +60,7 @@ const Form = (props) => {
 					:
 					<div className="gameContainer">
 						<label htmlFor="gameName">Name of Game</label>
-						<input type="text" id="gameName" name="eventGame" onChange={props.handleChange} value={props.state.eventGame} placeholder="Name of the Game you're hosting"/>
+						<input type="text" id="gameName" name="eventGame" onChange={props.handleChange} value={props.state.eventGame} placeholder="Name of the game"/>
 					</div>
 				}
 				<label htmlFor="eventDetails">Details</label>

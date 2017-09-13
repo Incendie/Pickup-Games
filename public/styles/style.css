@@ -188,6 +188,9 @@ textarea {
 label {
   color: #e7dfc6; }
 
+i, a {
+  color: #e9f1f7; }
+
 header {
   padding: 20px;
   background: #131B23;
@@ -352,6 +355,13 @@ li {
 .buttonContainer {
   display: flex;
   justify-content: space-around; }
+
+footer {
+  height: 100px;
+  background-color: #131B23; }
+
+.footLinks {
+  margin: 0; }
 
 @media (max-width: 900px) {
   .radioContainer {
