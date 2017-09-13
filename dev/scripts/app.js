@@ -193,7 +193,7 @@ class App extends React.Component {
 								</div>
 					        }
 					        {this.state.user ?
-					        	<div>
+					        	<div className="buttonBox">
 									<Link to="/host"><button>Host an Event</button></Link>
 									<Link to="/browse"><button>Browse Events</button></Link>
 								</div>
@@ -237,7 +237,7 @@ class App extends React.Component {
 								</Route>
 								</div>
 								:
-								<Route exact path="" component={Main}></Route>
+								null
 							}
 						</main>
 					</div>

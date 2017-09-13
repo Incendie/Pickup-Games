@@ -137,13 +137,18 @@ body {
 
 h1, h2, h3, p {
   padding: 0;
-  margin: 0; }
+  margin: 0;
+  color: #e9f1f7; }
 
 h1, h2, h3, label {
   font-family: "Patua One", cursive; }
 
-p, input, textarea, input::placeholder, textarea::placeholder {
-  font-family: "Open Sans", sans-serif; }
+p {
+  font-family: "Open Sans", sans-serif;
+  color: #e9f1f7; }
+
+input, textarea {
+  color: #131B23; }
 
 img {
   width: 100%;
@@ -157,9 +162,13 @@ ul, li {
   padding: 0; }
 
 button {
-  background: none;
-  border: none;
-  display: block; }
+  padding: 10px 0;
+  margin: 5px;
+  border: 2px solid black;
+  border-radius: 5px;
+  background: #2274a5;
+  display: block;
+  font-weight: bold; }
 
 input, textarea {
   border-style: none; }
@@ -176,21 +185,27 @@ input, textarea, select, button {
 textarea {
   resize: none; }
 
+label {
+  color: #e7dfc6; }
+
 header {
   padding: 20px;
-  background: black;
+  background: #131B23;
   color: white;
   box-shadow: 0px 0px 8px 2px red;
-  height: 100px; }
+  height: 100px;
+  box-shadow: 0 10px 20px white, 0 6px 6px rgba(255, 255, 255, 0.23);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); }
 
 .intro {
   margin: 100px auto;
   text-align: center;
   border: 5px solid black;
   background: rgba(255, 255, 255, 0.9);
-  color: black;
   width: 80%;
   padding: 20px; }
+  .intro h1, .intro p {
+    color: #131B23; }
   .intro h1 {
     margin-bottom: 20px; }
   .intro p:nth-child(4) {
@@ -200,7 +215,9 @@ header {
 
 .leaflet-container {
   height: 100%;
-  width: 100%; }
+  width: 100%;
+  border: 5px solid #2274a5;
+  border-radius: 5px; }
 
 #map {
   height: 500px;
@@ -223,24 +240,25 @@ aside {
   padding: 20px; }
   aside button {
     margin: 10px 0;
-    background: orange;
-    padding: 10px; }
+    min-width: 120px; }
   aside .loginBtn {
     background: green; }
   aside .logoutBtn {
     background: red; }
   aside p {
     text-align: center;
-    margin: 10px 0; }
+    margin: 10px 0;
+    font-weight: bold;
+    color: #131B23; }
 
 main {
   background: lightgrey;
   background-image: url("../../public/assets/sportsballs1.png");
-  background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url("../../public/assets/sportsballs1.png");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("../../public/assets/sportsballs1.png");
   background-size: contain;
-  min-width: 500px;
+  min-width: 480px;
   width: 80%;
-  padding: 20px;
+  padding: 40px 100px;
   color: white; }
 
 .appContainer {
@@ -264,7 +282,6 @@ form {
   display: flex;
   flex-direction: column; }
   form button {
-    background: brown;
     width: 100px;
     padding: 10px;
     margin: 20px auto; }
@@ -275,6 +292,9 @@ form {
     margin-right: 50px;
     margin-left: 10px; }
 
+.radioBox {
+  width: 100px; }
+
 .middleLine {
   display: flex;
   align-items: center; }
@@ -283,6 +303,9 @@ form {
 
 #eventCap {
   margin-right: 40px; }
+
+label[for="eventCap"] {
+  margin-top: 20px; }
 
 .gameContainer {
   display: flex;
@@ -304,12 +327,13 @@ ul {
   flex-wrap: wrap; }
 
 li {
-  border: 5px solid black;
+  border: 5px solid #2274a5;
   border-radius: 5px;
   padding: 20px;
   width: calc(50% - 10px);
-  background: rgba(255, 255, 255, 0.9);
-  color: black; }
+  background: rgba(255, 255, 255, 0.9); }
+  li h2, li p {
+    color: #131B23; }
   li:nth-child(odd) {
     margin: 0 20px 20px 0; }
   li:nth-child(even) {
@@ -317,7 +341,6 @@ li {
   li button {
     padding: 10px;
     margin: 5px;
-    background: green;
     border: 2px solid black;
     border-radius: 5px; }
   li em {
@@ -329,3 +352,48 @@ li {
 .buttonContainer {
   display: flex;
   justify-content: space-around; }
+
+@media (max-width: 900px) {
+  .radioContainer {
+    display: flex; } }
+
+@media (max-width: 768px) {
+  main {
+    padding: 25px;
+    padding-bottom: 0;
+    min-height: calc(100vh - 225px); }
+  .appContainer {
+    flex-direction: column; }
+  aside, main {
+    width: 100%; }
+  aside {
+    flex-direction: row;
+    justify-content: space-between;
+    min-height: 100px; }
+  .buttonBox {
+    display: flex; }
+    .buttonBox button {
+      margin: 0 10px; }
+  .user-profile {
+    width: 50px; }
+    .user-profile p {
+      font-size: 0.7rem; } }
+
+@media (max-width: 480px) {
+  .user-profile {
+    position: fixed;
+    top: 20px;
+    right: 20px; }
+    .user-profile p {
+      color: #e9f1f7;
+      margin-top: 5px; }
+  aside {
+    flex-direction: column; }
+  main {
+    min-width: 300px; }
+  .middleLine {
+    flex-direction: column; }
+  li {
+    width: 100%; }
+    li:nth-child(even), li:nth-child(odd) {
+      margin-right: 0; } }

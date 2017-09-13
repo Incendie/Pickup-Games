@@ -1,0 +1,75 @@
+@media (max-width: 900px){
+	.radioContainer {
+		display: flex;
+	}
+}
+
+@media (max-width: 768px){
+	main {
+		padding: 25px;
+		padding-bottom: 0;
+		min-height: calc(100vh - 225px);
+	}
+
+	.appContainer {
+		flex-direction: column;
+	}
+
+	aside, main {
+		width: 100%;
+	}
+
+	aside {
+		flex-direction: row;
+		justify-content: space-between;
+		min-height: 100px;
+	}
+	
+	.buttonBox {
+		display: flex;
+
+		button {
+			margin: 0 10px;
+		}
+	}
+
+	.user-profile {
+		width: 50px;
+
+		p {
+			font-size: 0.7rem;
+		}
+	}
+}
+
+@media (max-width: 480px){
+	.user-profile {
+		position: fixed;
+		top: 20px;
+		right: 20px;
+
+		p {
+			color: $textColour;
+			margin-top: 5px;
+		}
+	}
+
+	aside {
+		flex-direction: column;
+	}
+	
+	main {
+		min-width: 300px;
+	}
+	.middleLine {
+		flex-direction: column;
+	}
+
+	li {
+		width: 100%;
+
+		&:nth-child(even), &:nth-child(odd){
+			margin-right: 0;
+		}
+	}
+}

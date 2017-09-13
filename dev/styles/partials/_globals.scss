@@ -5,14 +5,20 @@ body {
 h1, h2, h3, p {
 	padding: 0;
 	margin: 0;
+	color: $textColour;
 }
 
 h1, h2, h3, label {
 	font-family: $headingFont;	
 }
 
-p, input, textarea, input::placeholder, textarea::placeholder {
+p {
 	font-family: $textFont;
+	color: $textColour;
+}
+
+input, textarea {
+	color: $headerColour;
 }
 
 img {
@@ -30,9 +36,13 @@ ul, li {
 }
 
 button {
-	background: none;
-	border: none;
+	padding: 10px 0;
+	margin: 5px;
+	border: 2px solid black;
+	border-radius: 5px;
+	background: $buttonColour;
 	display: block;
+	font-weight: bold;
 }
 
 input, textarea {
@@ -53,4 +63,8 @@ input, textarea, select, button {
 
 textarea {
 	resize: none;
+}
+
+label {
+	color: $labelColour;
 }

@@ -22,13 +22,19 @@ const Form = (props) => {
 				    value={props.state.eventAddy}
 				/>
 				<div className="middleLine">
-					<label htmlFor="eventCap">Max No. of Players</label>
-					<input type="number" name="eventCap" id="eventCap" onChange={props.handleChange} value={props.state.eventCap}/>
+					<div className="formBox">
+						<label htmlFor="eventCap">Max No. of Players</label>
+						<input type="number" name="eventCap" id="eventCap" onChange={props.handleChange} value={props.state.eventCap}/>
+					</div>
 					<div className="radioContainer">
-						<input type="radio" name="eventType" id="eventSport" onClick={props.handleChange} value="sports"/>
-						<label htmlFor="eventSport">Sports</label>
-						<input type="radio" name="eventType" id="eventGaming" onClick={props.handleChange} value="gaming"/>
-						<label htmlFor="eventGaming">Gaming</label>
+						<div className="radioBox">
+							<input type="radio" name="eventType" id="eventSport" onClick={props.handleChange} value="sports"/>
+							<label htmlFor="eventSport">Sports</label>
+						</div>
+						<div className="radioBox">
+							<input type="radio" name="eventType" id="eventGaming" onClick={props.handleChange} value="gaming"/>
+							<label htmlFor="eventGaming">Gaming</label>
+						</div>
 					</div>
 				</div>	
 				{props.eventType==="sports" ?

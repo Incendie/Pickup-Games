@@ -32,8 +32,13 @@ const Browse = (props) => {
 							<p>{event.eventAddy}</p>
 							<p>{event.eventJoined}/{event.eventCap}</p>
 							<p className="eventDetails">{event.eventDetails}</p>
+
 							<div className="buttonContainer">
-								<button onClick={ () => props.removeEvent(event.id)}>Remove Event</button>
+								{props.user.uid===event.uid ?	
+									<button onClick={ () => props.removeEvent(event.id)}>Remove Event</button>
+									:
+									null
+								}
 								<button onClick={ () => props.joinEvent(event.id)}>Join Event</button>
 							</div>
 						</li>

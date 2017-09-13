@@ -1,9 +1,11 @@
 header {
 	padding: 20px;
-	background: black;
+	background: $headerColour;
 	color: white;
 	box-shadow: 0px 0px 8px 2px red;
 	height: 100px;
+	box-shadow: 0 10px 20px rgba(255,255,255,19), 0 6px 6px rgba(255,255,255,0.23);
+	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
 .intro {
@@ -11,10 +13,12 @@ header {
 	text-align: center;
 	border: 5px solid black;
 	background: rgba(255,255,255,0.9);
-	color: black;
 	width: 80%;
 	padding: 20px;
-
+	
+	h1, p{
+		color: $headerColour;
+	}
 	h1 {
 		margin-bottom: 20px;
 	}
@@ -31,6 +35,8 @@ header {
 .leaflet-container {
     height: 100%;
     width: 100%;
+    border: 5px solid $buttonColour;
+    border-radius: 5px;
 }
 
 #map { 
@@ -59,8 +65,7 @@ aside {
 
 	button {
 		margin: 10px 0;
-		background: orange;
-		padding: 10px;
+		min-width: 120px;
 	}
 
 	.loginBtn {
@@ -74,17 +79,19 @@ aside {
 	p {
 		text-align: center;
 		margin: 10px 0;
+		font-weight: bold;
+		color: $headerColour;
 	}
 }
 
 main {
 	background: lightgrey;
 	background-image: url("../../public/assets/sportsballs1.png");
-	background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url("../../public/assets/sportsballs1.png");
+	background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("../../public/assets/sportsballs1.png");
 	background-size: contain;
-	min-width: 500px;
+	min-width: 480px;
 	width: 80%;
-	padding: 20px;
+	padding: 40px 100px;
 	color: white;
 }
 
@@ -114,7 +121,6 @@ form {
 	flex-direction: column;
 
 	button {
-		background: brown;
 		width: 100px;
 		padding: 10px;
 		margin: 20px auto;
@@ -124,11 +130,14 @@ form {
 .radioContainer {
 	margin: 10px;
 
+
 	label {
 		margin-right: 50px;
 		margin-left: 10px;
 	}
 }
+
+.radioBox {width: 100px;}
 
 .middleLine {
 	display: flex;
@@ -142,6 +151,10 @@ form {
 
 #eventCap {
 	margin-right: 40px;
+}
+
+label[for="eventCap"]{
+	margin-top: 20px;
 }
 
 .gameContainer {
@@ -171,12 +184,15 @@ ul {
 }
 
 li {
-	border: 5px solid black;
+	border: 5px solid $buttonColour;
 	border-radius: 5px;
 	padding: 20px;
 	width: calc(50% - 10px);
 	background: rgba(255,255,255,0.9);
-	color: black;
+	
+	h2, p {
+		color: $headerColour;
+	}
 
 	&:nth-child(odd){
 		margin: 0 20px 20px 0;
@@ -189,7 +205,6 @@ li {
 	button {
 		padding: 10px;
 		margin: 5px;
-		background: green;
 		border: 2px solid black;
 		border-radius: 5px;
 	}
