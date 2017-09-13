@@ -3,6 +3,29 @@ header {
 	background: black;
 	color: white;
 	box-shadow: 0px 0px 8px 2px red;
+	height: 100px;
+}
+
+.intro {
+	margin: 100px auto;
+	text-align: center;
+	border: 5px solid black;
+	background: rgba(255,255,255,0.9);
+	color: black;
+	width: 80%;
+	padding: 20px;
+
+	h1 {
+		margin-bottom: 20px;
+	}
+
+	p:nth-child(4){
+		margin: 10px;
+	}
+
+	p:nth-child(2), p:nth-child(5){
+		margin-bottom: 10px;
+	}
 }
 
 .leaflet-container {
@@ -32,7 +55,7 @@ aside {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 20px 0;
+	padding: 20px;
 
 	button {
 		margin: 10px 0;
@@ -67,8 +90,8 @@ main {
 
 .appContainer {
 	display: flex;
-	min-height: 800px;
 	flex-direction: row;
+	min-height: calc(100vh - 100px);
 }
 
 .mapBtn {
@@ -99,7 +122,6 @@ form {
 }
 
 .radioContainer {
-	padding: 0 calc(100% / 3);
 	margin: 10px;
 
 	label {
@@ -108,9 +130,24 @@ form {
 	}
 }
 
+.middleLine {
+	display: flex;
+	align-items: center;
+
+	label {
+		margin-right: 20px;
+	}
+
+}
+
+#eventCap {
+	margin-right: 40px;
+}
+
 .gameContainer {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 
 	label {
 		margin-right: 20px;
@@ -127,4 +164,46 @@ label[for="eventDetails"] {
 
 #mapCentre {
 	margin-bottom: 20px;
+}
+ul {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+li {
+	border: 5px solid black;
+	border-radius: 5px;
+	padding: 20px;
+	width: calc(50% - 10px);
+	background: rgba(255,255,255,0.9);
+	color: black;
+
+	&:nth-child(odd){
+		margin: 0 20px 20px 0;
+	}
+
+	&:nth-child(even){
+		margin-bottom: 20px;
+	}
+ 
+	button {
+		padding: 10px;
+		margin: 5px;
+		background: green;
+		border: 2px solid black;
+		border-radius: 5px;
+	}
+
+	em {
+		text-transform: capitalize;
+	}
+}
+
+.eventDetails {
+	margin: 20px 0;
+}
+
+.buttonContainer {
+	display: flex;
+	justify-content: space-around;
 }

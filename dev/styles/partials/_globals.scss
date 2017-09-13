@@ -24,7 +24,7 @@ a {
 	text-decoration: none;
 }
 
-li {
+ul, li {
 	list-style: none;
 	padding: 0;
 }
@@ -49,4 +49,8 @@ input, textarea, select {
 
 input, textarea, select, button {
 	border-radius: 3px;
+}
+
+textarea {
+	resize: none;
 }

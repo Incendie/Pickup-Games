@@ -4,7 +4,6 @@ import Autocomplete from 'react-google-autocomplete';
 import EventMap from './EventMap.js';
 
 const Browse = (props) => {
-	console.log(props);
 	return(
 		<div>
 			<h1>Browse</h1>
@@ -31,9 +30,12 @@ const Browse = (props) => {
 						<li key={event.id}>
 							<h2>{event.eventName} - <em>{event.eventGame}</em></h2>
 							<p>{event.eventAddy}</p>
-							<p>{event.eventDetails}</p>
-							<button onClick={ () => props.removeEvent(event.id)}>Remove Event</button>
-							<button onClick={ () => props.joinEvent(event.id)}>Join Event</button>
+							<p>{event.eventJoined}/{event.eventCap}</p>
+							<p className="eventDetails">{event.eventDetails}</p>
+							<div className="buttonContainer">
+								<button onClick={ () => props.removeEvent(event.id)}>Remove Event</button>
+								<button onClick={ () => props.joinEvent(event.id)}>Join Event</button>
+							</div>
 						</li>
 					)
 				})}

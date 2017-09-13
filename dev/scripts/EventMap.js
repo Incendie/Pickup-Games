@@ -3,7 +3,6 @@ import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import L from 'leaflet';
 
 const EventMap = (props) => {
-	console.log(props.event);
 	return (
 	  <Map center={props.position} zoom={14}>
 	    <TileLayer
@@ -36,7 +35,8 @@ const EventMap = (props) => {
 			        		<strong>{event.eventName}</strong>
 			        		<em> - {event.eventGame}</em>
 			        	</div>
-			        	<br/><em>{event.eventAddy}</em>
+			        	<em>{event.eventAddy}</em>
+			        	<br/>{event.eventJoined}/{event.eventCap} joined
 			        	<br/><br/>{event.eventDetails}
 		        		<br/>{props.user.uid===event.uid ?
 		        			<div>

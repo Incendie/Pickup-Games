@@ -12,6 +12,7 @@ import firebase, {auth, provider} from './firebase';
 import Host from './Host';
 import Browse from './Browse';
 import Header from './Header';
+import Main from './Main';
 
 const dbRef = firebase.database().ref(`/events`);
 
@@ -31,6 +32,8 @@ class App extends React.Component {
 			eventDetails: "",
 			position: [],
 			mapCentre: [43.6479204,-79.3974025],
+			eventJoined: 0,
+			eventCap: 0,
 		};
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleChange = this.handleChange.bind(this);
@@ -86,6 +89,8 @@ class App extends React.Component {
 				eventGame: this.state.eventGame,
 				eventType: this.state.eventType,
 				eventDetails: this.state.eventDetails,
+				eventJoined: this.state.eventJoined,
+				eventCap: this.state.eventCap,
 			}
 
 			dbRef.push(newEvent);
@@ -122,13 +127,26 @@ class App extends React.Component {
 	}
 
 	removeEvent(i){
-		const eventRef = firebase.database().ref(`/events/${i}`)
+		const eventRef = firebase.database().ref(`/events/${i}`);
 		eventRef.remove();
 	}
 
 	joinEvent(i) {
-		const eventRef = firebase.database().ref(`/events/${i}`)
-		//code for joining event by adding username
+		const eventRef = firebase.database().ref(`/events/${i}`);
+		let joined;
+		let cap;
+		eventRef.on("value", (obj) => {
+			joined = (obj.val().eventJoined);
+			cap = (obj.val().eventCap);
+		});
+
+		if (joined < cap) {
+			joined++;
+			eventRef.child("eventJoined").set(joined);
+		}
+		else {
+			alert("Maximum number of players reached.")
+		}
 	}
 
 	componentDidMount() {
@@ -171,11 +189,17 @@ class App extends React.Component {
 								</div>
 								:
 								<div className='wrapper'>
-									<p>You must be logged in to see the events and submit to it.</p>
+									<p>You must be logged in to browse or host events.</p>
 								</div>
 					        }
-							<Link to="/host"><button>Host an Event</button></Link>
-							<Link to="/browse"><button>Browse Events</button></Link>
+					        {this.state.user ?
+					        	<div>
+									<Link to="/host"><button>Host an Event</button></Link>
+									<Link to="/browse"><button>Browse Events</button></Link>
+								</div>
+								:
+								null
+							}
 							{this.state.user ? 
 					        	<button className="logoutBtn" onClick={this.logout}>Logout</button>
 				        		:
@@ -183,30 +207,38 @@ class App extends React.Component {
 					        }
 						</aside>
 						<main>
-							<Route path="/host" render={() => (
-								<Host 
-									handleSubmit={this.handleSubmit} 
-									handleChange={this.handleChange}
-									state={this.state}
-									eventType={this.state.eventType}
-									handleEventSport={this.handleEventSport}
-									handleEventGame={this.handleEventGame}
-									handleAddyChange={this.handleAddyChange}
-								/>)}>
-							</Route>
-							<Route path="/browse" render={() => (
-								<Browse 
-									removeEvent={this.removeEvent}
-									lat={this.state.lat}
-									lng={this.state.lng}
-									events={this.state.events}
-									markers={this.state.markers}
-									user={this.state.user}
-									position={this.state.mapCentre}
-									handleChange={this.handleChange}
-									handlePosChange={this.handlePosChange}
-								/>)}>
-							</Route>
+							<Route exact path="/" component={Main}></Route>
+							{this.state.user ?
+								<div>
+								<Route path="/host" render={() => (
+									<Host 
+										handleSubmit={this.handleSubmit} 
+										handleChange={this.handleChange}
+										state={this.state}
+										eventType={this.state.eventType}
+										handleEventSport={this.handleEventSport}
+										handleEventGame={this.handleEventGame}
+										handleAddyChange={this.handleAddyChange}
+									/>)}>
+								</Route>
+								<Route path="/browse" render={() => (
+									<Browse 
+										removeEvent={this.removeEvent}
+										lat={this.state.lat}
+										lng={this.state.lng}
+										events={this.state.events}
+										markers={this.state.markers}
+										user={this.state.user}
+										position={this.state.mapCentre}
+										handleChange={this.handleChange}
+										handlePosChange={this.handlePosChange}
+										joinEvent={this.joinEvent}
+									/>)}>
+								</Route>
+								</div>
+								:
+								<Route exact path="" component={Main}></Route>
+							}
 						</main>
 					</div>
 				</Router>

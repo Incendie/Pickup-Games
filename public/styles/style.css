@@ -152,7 +152,7 @@ img {
 a {
   text-decoration: none; }
 
-li {
+ul, li {
   list-style: none;
   padding: 0; }
 
@@ -173,11 +173,30 @@ input, textarea, select {
 input, textarea, select, button {
   border-radius: 3px; }
 
+textarea {
+  resize: none; }
+
 header {
   padding: 20px;
   background: black;
   color: white;
-  box-shadow: 0px 0px 8px 2px red; }
+  box-shadow: 0px 0px 8px 2px red;
+  height: 100px; }
+
+.intro {
+  margin: 100px auto;
+  text-align: center;
+  border: 5px solid black;
+  background: rgba(255, 255, 255, 0.9);
+  color: black;
+  width: 80%;
+  padding: 20px; }
+  .intro h1 {
+    margin-bottom: 20px; }
+  .intro p:nth-child(4) {
+    margin: 10px; }
+  .intro p:nth-child(2), .intro p:nth-child(5) {
+    margin-bottom: 10px; }
 
 .leaflet-container {
   height: 100%;
@@ -201,7 +220,7 @@ aside {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 0; }
+  padding: 20px; }
   aside button {
     margin: 10px 0;
     background: orange;
@@ -226,8 +245,8 @@ main {
 
 .appContainer {
   display: flex;
-  min-height: 800px;
-  flex-direction: row; }
+  flex-direction: row;
+  min-height: calc(100vh - 100px); }
 
 .mapBtn {
   margin: 5px auto;
@@ -251,15 +270,24 @@ form {
     margin: 20px auto; }
 
 .radioContainer {
-  padding: 0 calc(100% / 3);
   margin: 10px; }
   .radioContainer label {
     margin-right: 50px;
     margin-left: 10px; }
 
+.middleLine {
+  display: flex;
+  align-items: center; }
+  .middleLine label {
+    margin-right: 20px; }
+
+#eventCap {
+  margin-right: 40px; }
+
 .gameContainer {
   display: flex;
-  justify-content: space-between; }
+  justify-content: space-between;
+  align-items: center; }
   .gameContainer label {
     margin-right: 20px; }
   .gameContainer input {
@@ -270,3 +298,34 @@ label[for="eventDetails"] {
 
 #mapCentre {
   margin-bottom: 20px; }
+
+ul {
+  display: flex;
+  flex-wrap: wrap; }
+
+li {
+  border: 5px solid black;
+  border-radius: 5px;
+  padding: 20px;
+  width: calc(50% - 10px);
+  background: rgba(255, 255, 255, 0.9);
+  color: black; }
+  li:nth-child(odd) {
+    margin: 0 20px 20px 0; }
+  li:nth-child(even) {
+    margin-bottom: 20px; }
+  li button {
+    padding: 10px;
+    margin: 5px;
+    background: green;
+    border: 2px solid black;
+    border-radius: 5px; }
+  li em {
+    text-transform: capitalize; }
+
+.eventDetails {
+  margin: 20px 0; }
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-around; }
