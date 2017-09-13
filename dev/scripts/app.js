@@ -7,6 +7,7 @@ import { ajax } from 'jquery';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import Autocomplete from 'react-google-autocomplete';
+import FontAwesome from 'react-fontawesome';
 
 import firebase, {auth, provider} from './firebase';
 import Host from './Host';

@@ -226,8 +226,20 @@ li {
 footer {
 	height: 100px;
 	background-color: $headerColour;
+
+
+	a {
+		margin-right: 40px;
+	}
 }
 
 .footLinks {
-	margin: 0;
+	margin: 0 auto;
+	padding: 40px;
+	display: block;
+	min-width: 200px;
+}
+
+i, a {
+	color: $textColour;
 }
