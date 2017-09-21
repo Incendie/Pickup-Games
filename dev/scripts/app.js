@@ -50,6 +50,7 @@ class App extends React.Component {
 		auth.signInWithPopup(provider)
 			.then((res)=>{
 				let user = res.user;
+				console.log(user);
 				this.setState({user});
 			})
 	}
@@ -175,73 +176,54 @@ class App extends React.Component {
 		});
 	}
 
+	handleClick(e, history) {
+		e.preventDefault();
+		history.push("/"+e.target.name)
+	}
+
 	render(){
 		return(
 			<div>
-				<Header />
 				<Router>
-					<div className="appContainer">
-						<aside>
-					        {this.state.user ?
-								<div>
-									<div className='user-profile'>
-										<img src={this.state.user.photoURL} />
-										<p>{this.state.user.displayName || this.state.user.email}</p>
+					<div>
+						<Route path ="/" render={(props)=>{return(<Header user={this.state.user} login={this.login} logout={this.logout} {...props} handleClick={this.handleClick}/>)}}/>
+						<div className="appContainer">
+							<main>
+								<Route exact path="/" component={Main}></Route>
+								{this.state.user ?
+									<div>
+									<Route path="/host" render={(props) => (
+										<Host 
+											handleSubmit={this.handleSubmit} 
+											handleChange={this.handleChange}
+											state={this.state}
+											eventType={this.state.eventType}
+											handleEventSport={this.handleEventSport}
+											handleEventGame={this.handleEventGame}
+											handleAddyChange={this.handleAddyChange}
+											{...props}
+										/>)}>
+									</Route>
+									<Route path="/browse" render={() => (
+										<Browse 
+											removeEvent={this.removeEvent}
+											lat={this.state.lat}
+											lng={this.state.lng}
+											events={this.state.events}
+											markers={this.state.markers}
+											user={this.state.user}
+											position={this.state.mapCentre}
+											handleChange={this.handleChange}
+											handlePosChange={this.handlePosChange}
+											joinEvent={this.joinEvent}
+										/>)}>
+									</Route>
 									</div>
-								</div>
-								:
-								<div className='wrapper'>
-									<p>You must be logged in to browse or host events.</p>
-								</div>
-					        }
-					        {this.state.user ?
-					        	<div className="buttonBox">
-									<Link to="/host"><button>Host an Event</button></Link>
-									<Link to="/browse"><button>Browse Events</button></Link>
-								</div>
-								:
-								null
-							}
-							{this.state.user ? 
-					        	<button className="logoutBtn" onClick={this.logout}>Logout</button>
-				        		:
-					        	<button className="loginBtn" onClick={this.login}>Login</button>
-					        }
-						</aside>
-						<main>
-							<Route exact path="/" component={Main}></Route>
-							{this.state.user ?
-								<div>
-								<Route path="/host" render={() => (
-									<Host 
-										handleSubmit={this.handleSubmit} 
-										handleChange={this.handleChange}
-										state={this.state}
-										eventType={this.state.eventType}
-										handleEventSport={this.handleEventSport}
-										handleEventGame={this.handleEventGame}
-										handleAddyChange={this.handleAddyChange}
-									/>)}>
-								</Route>
-								<Route path="/browse" render={() => (
-									<Browse 
-										removeEvent={this.removeEvent}
-										lat={this.state.lat}
-										lng={this.state.lng}
-										events={this.state.events}
-										markers={this.state.markers}
-										user={this.state.user}
-										position={this.state.mapCentre}
-										handleChange={this.handleChange}
-										handlePosChange={this.handlePosChange}
-										joinEvent={this.joinEvent}
-									/>)}>
-								</Route>
-								</div>
-								:
-								null
-							}
-						</main>
+									:
+									null
+								}
+							</main>
+						</div>
 					</div>
 				</Router>
 				<Footer />

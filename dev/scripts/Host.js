@@ -3,7 +3,7 @@ import Form from './Form';
 
 const Host = (props) => {
 	return(
-		<div>
+		<div className="wrapper">
 			<h1>Host an Event</h1>
 			<Form 
 				handleSubmit={props.handleSubmit}

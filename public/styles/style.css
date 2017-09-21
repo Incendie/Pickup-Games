@@ -138,14 +138,17 @@ body {
 h1, h2, h3, p {
   padding: 0;
   margin: 0;
-  color: #e9f1f7; }
+  color: #FBFEF9; }
 
 h1, h2, h3, label {
   font-family: "Patua One", cursive; }
 
+h1 {
+  text-align: center; }
+
 p {
   font-family: "Open Sans", sans-serif;
-  color: #e9f1f7; }
+  color: #FBFEF9; }
 
 input, textarea {
   color: #131B23; }
@@ -166,7 +169,7 @@ button {
   margin: 5px;
   border: 2px solid black;
   border-radius: 5px;
-  background: #2274a5;
+  background: #0E79B2;
   display: block;
   font-weight: bold; }
 
@@ -188,6 +191,10 @@ textarea {
 label {
   color: #e7dfc6; }
 
+.wrapper {
+  width: 1170px;
+  margin: 0 auto; }
+
 header {
   padding: 20px;
   background: #131B23;
@@ -195,7 +202,14 @@ header {
   box-shadow: 0px 0px 8px 2px red;
   height: 100px;
   box-shadow: 0 10px 20px white, 0 6px 6px rgba(255, 255, 255, 0.23);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); }
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  display: flex;
+  justify-content: space-between; }
+
+.buttonBox {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 44px; }
 
 .intro {
   margin: 100px auto;
@@ -216,7 +230,7 @@ header {
 .leaflet-container {
   height: 100%;
   width: 100%;
-  border: 5px solid #2274a5;
+  border: 5px solid #0E79B2;
   border-radius: 5px; }
 
 #map {
@@ -225,27 +239,28 @@ header {
   margin: 0 auto; }
 
 .user-profile {
-  width: 100px; }
+  width: 80px;
+  margin-top: 20px;
+  margin-left: 44px; }
   .user-profile img {
     border-radius: 50%; }
 
-aside {
-  background: darkgrey;
+.aside {
   color: white;
   min-width: 160px;
   width: 20%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row-reverse;
   align-items: center;
   padding: 20px; }
-  aside button {
-    margin: 10px 0;
+  .aside button {
+    margin: 10px;
     min-width: 120px; }
-  aside .loginBtn {
-    background: green; }
-  aside .logoutBtn {
-    background: red; }
-  aside p {
+  .aside .loginBtn {
+    background: #95C623; }
+  .aside .logoutBtn {
+    background: #EC4E20; }
+  .aside p {
     text-align: center;
     margin: 10px 0;
     font-weight: bold;
@@ -253,11 +268,10 @@ aside {
 
 main {
   background: lightgrey;
-  background-image: url("../../public/assets/sportsballs1.png");
-  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("../../public/assets/sportsballs1.png");
-  background-size: contain;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4)), url("../../public/assets/field.jpg");
+  background-size: cover;
   min-width: 480px;
-  width: 80%;
+  width: 100%;
   padding: 40px 100px;
   color: white; }
 
@@ -278,9 +292,11 @@ main {
   background: lightgreen; }
 
 form {
-  margin: 20px 0;
+  margin: 20px auto;
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  max-width: 80%;
+  width: 800px; }
   form button {
     width: 100px;
     padding: 10px;
@@ -327,7 +343,7 @@ ul {
   flex-wrap: wrap; }
 
 li {
-  border: 5px solid #2274a5;
+  border: 5px solid #0E79B2;
   border-radius: 5px;
   padding: 20px;
   width: calc(50% - 10px);
@@ -366,7 +382,7 @@ footer {
   min-width: 200px; }
 
 i, a {
-  color: #e9f1f7; }
+  color: #FBFEF9; }
 
 @media (max-width: 900px) {
   .radioContainer {
@@ -400,7 +416,7 @@ i, a {
     top: 20px;
     right: 20px; }
     .user-profile p {
-      color: #e9f1f7;
+      color: #FBFEF9;
       margin-top: 5px; }
   aside {
     flex-direction: column; }

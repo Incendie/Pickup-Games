@@ -12,6 +12,10 @@ h1, h2, h3, label {
 	font-family: $headingFont;	
 }
 
+h1 {
+	text-align: center;
+}
+
 p {
 	font-family: $textFont;
 	color: $textColour;
@@ -67,5 +71,10 @@ textarea {
 
 label {
 	color: $labelColour;
+}
+
+.wrapper { 
+	width: 1170px;
+	margin: 0 auto;
 }
 
