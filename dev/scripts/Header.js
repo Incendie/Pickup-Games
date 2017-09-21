@@ -4,7 +4,7 @@ const Header = (props) => {
 	return(
 			<header>
 				<div className="titleBox">
-					<h1>Pickup Games</h1>
+					<h1><a href="#home" name="" onClick={(e)=>{props.handleClick(e, props.history)}}>Pickup Games</a></h1>
 					<p>Host or Join an Event Near You</p>
 				</div>
 				<div className="aside">

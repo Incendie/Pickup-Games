@@ -5,7 +5,7 @@ import EventMap from './EventMap.js';
 
 const Browse = (props) => {
 	return(
-		<div>
+		<div className="wrapper">
 			<h1>Browse</h1>
 			<Autocomplete
 			    style={{width: '100%'}}
