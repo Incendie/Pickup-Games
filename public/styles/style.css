@@ -162,6 +162,8 @@ img {
 
 a {
   text-decoration: none; }
+  a:hover, a:focus {
+    font-weight: 700; }
 
 ul, li {
   list-style: none;

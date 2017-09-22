@@ -1,11 +1,11 @@
 import React from 'react';
-import $ from 'jquery';
+
 
 const Header = (props) => {
 	return(
 			<header>
 				<div className="titleBox">
-					<h1><a href="#home" name="" onClick={(e)=>{props.handleClick(e, props.history)}}>Pickup Games</a></h1>
+					<h1><a href="/PickupGames" name="" onClick={(e)=>{props.handleClick(e, props.history)}}>Pickup Games</a></h1>
 					<p>Host or Join an Event Near You</p>
 				</div>
 				<div id="hamburger" onClick={props.hamburgerClick}>

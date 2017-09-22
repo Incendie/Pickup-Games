@@ -16,13 +16,11 @@ const EventMap = (props) => {
 	    		iconLoc=event.eventGame;
 	    	}
 	    	let myIcon = L.icon({
-	    	    iconUrl: `../../public/assets/mapIcons/${iconLoc}.svg`,
+	    	    iconUrl: `../public/assets/mapIcons/${iconLoc}.svg`,
 	    	    iconSize: [38, 95],
 	    	    iconAnchor: [22, 94],
 	    	    popupAnchor: [-3, -76],
 	    	});
-	    	
-	    	
 	    	return(
 			    <Marker 
 			    		key={event.id}

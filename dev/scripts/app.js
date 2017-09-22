@@ -179,7 +179,7 @@ class App extends React.Component {
 
 	handleClick(e, history) {
 		e.preventDefault();
-		history.push("/"+e.target.name)
+		history.push("/PickupGames/"+e.target.name)
 	}
 
 	hamburgerClick() {
@@ -192,13 +192,13 @@ class App extends React.Component {
 			<div>
 				<Router>
 					<div>
-						<Route path ="/" render={(props)=>{return(<Header user={this.state.user} login={this.login} logout={this.logout} {...props} handleClick={this.handleClick} hamburgerClick={this.hamburgerClick}/>)}}/>
+						<Route path ="/PickupGames/" render={(props)=>{return(<Header user={this.state.user} login={this.login} logout={this.logout} {...props} handleClick={this.handleClick} hamburgerClick={this.hamburgerClick}/>)}}/>
 						<div className="appContainer">
 							<main>
-								<Route exact path="/" component={Main}></Route>
+								<Route exact path="/PickupGames/" component={Main}></Route>
 								{this.state.user ?
 									<div>
-									<Route path="/host" render={(props) => (
+									<Route path="/PickupGames/host" render={(props) => (
 										<Host 
 											handleSubmit={this.handleSubmit} 
 											handleChange={this.handleChange}
@@ -210,7 +210,7 @@ class App extends React.Component {
 											{...props}
 										/>)}>
 									</Route>
-									<Route path="/browse" render={() => (
+									<Route path="/PickupGames/browse" render={() => (
 										<Browse 
 											removeEvent={this.removeEvent}
 											lat={this.state.lat}
