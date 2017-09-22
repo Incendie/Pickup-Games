@@ -2,7 +2,7 @@ import React from 'react';
 
 const Main = () => {
 	return(
-		<div className="intro">
+		<div className="intro wrapper">
 			<h1>Welcome to Pickup Games</h1>
 			<p>Have you ever:</p>
 			<p>Wanted to just join a game of pickup but didn't know where to look?</p>

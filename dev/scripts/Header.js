@@ -1,4 +1,5 @@
 import React from 'react';
+import $ from 'jquery';
 
 const Header = (props) => {
 	return(
@@ -6,6 +7,11 @@ const Header = (props) => {
 				<div className="titleBox">
 					<h1><a href="#home" name="" onClick={(e)=>{props.handleClick(e, props.history)}}>Pickup Games</a></h1>
 					<p>Host or Join an Event Near You</p>
+				</div>
+				<div id="hamburger" onClick={props.hamburgerClick}>
+					<span></span>
+					<span></span>
+					<span></span>
 				</div>
 				<div className="aside">
 					{props.user ?

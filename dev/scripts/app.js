@@ -8,6 +8,7 @@ import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import Autocomplete from 'react-google-autocomplete';
 import FontAwesome from 'react-fontawesome';
+import $ from 'jquery';
 
 import firebase, {auth, provider} from './firebase';
 import Host from './Host';
@@ -181,12 +182,17 @@ class App extends React.Component {
 		history.push("/"+e.target.name)
 	}
 
+	hamburgerClick() {
+		$("#hamburger").toggleClass("open");
+		$(".aside").toggleClass("open");
+	}
+
 	render(){
 		return(
 			<div>
 				<Router>
 					<div>
-						<Route path ="/" render={(props)=>{return(<Header user={this.state.user} login={this.login} logout={this.logout} {...props} handleClick={this.handleClick}/>)}}/>
+						<Route path ="/" render={(props)=>{return(<Header user={this.state.user} login={this.login} logout={this.logout} {...props} handleClick={this.handleClick} hamburgerClick={this.hamburgerClick}/>)}}/>
 						<div className="appContainer">
 							<main>
 								<Route exact path="/" component={Main}></Route>

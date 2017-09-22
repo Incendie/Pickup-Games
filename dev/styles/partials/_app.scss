@@ -3,11 +3,11 @@ header {
 	background: $headerColour;
 	color: white;
 	box-shadow: 0px 0px 8px 2px red;
-	height: 100px;
-	box-shadow: 0 10px 20px rgba(255,255,255,19), 0 6px 6px rgba(255,255,255,0.23);
+	height: 130px;	
 	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 	display: flex;
 	justify-content: space-between;
+	position: relative;
 }
 
 .buttonBox {
@@ -16,12 +16,65 @@ header {
 	
 }
 
+#hamburger {
+	width: 60px;
+	height: 45px;
+	transform: rotate(0deg);
+	cursor: pointer;
+	position: absolute;
+	right: 20px;
+	z-index: 10;
+	display: none;
+
+	span {
+		background: $textColour;
+		display: block;
+		position: absolute;
+		width: 100%;
+		height: 9px;
+		opacity: 1;
+		left: 0;
+		transform: rotate(0deg);
+		transition: .25s ease-in-out;
+		transform-origin: left center;
+		
+		&:first-child {
+			top: 0;
+		}
+
+		&:nth-child(2) {
+			top: 18px;
+		}
+
+		&:last-child{
+			top: 36px;
+		}
+	}
+
+	&.open span:first-child{
+		transform: rotate(45deg);
+		top: -3px;
+		left: 8px;
+	}
+
+	&.open span:nth-child(2){
+		width: 0%;
+		opacity: 0;
+	}
+
+	&.open span:last-child{
+		transform: rotate(-45deg);
+		top: 39px;
+		left: 8px;
+	}
+}
+
 .intro {
 	margin: 100px auto;
 	text-align: center;
-	border: 5px solid black;
+	border: 5px solid $headerColour;
 	background: rgba(255,255,255,0.9);
-	width: 80%;
+	box-shadow: 0 2px 2px rgba(0,0,0,0.19), 0 4px 4px rgba(0,0,0,0.23);
 	padding: 20px;
 	
 	h1, p{
@@ -41,10 +94,10 @@ header {
 }
 
 .leaflet-container {
-    height: 100%;
-    width: 100%;
-    border: 5px solid $buttonColour;
-    border-radius: 5px;
+  height: 100%;
+  width: 100%;
+  border: 5px solid $headerColour;
+  border-radius: 5px;
 }
 
 #map { 
@@ -93,16 +146,14 @@ header {
 
 	p {
 		text-align: center;
-		margin: 10px 0;
+		margin: 5px 0;
 		font-weight: bold;
-		color: $headerColour;
+		color: $textColour;
 	}
 }
 
 main {
-	background: lightgrey;
-	background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4)), url("../../public/assets/field.jpg");
-	background-size: cover;
+	
 	min-width: 480px;
 	width: 100%;
 	padding: 100px;
@@ -198,6 +249,7 @@ label[for="eventDetails"] {
 	margin-bottom: 20px;
 	font-size: 1.4rem;
 	padding: 10px;
+	border: 5px solid $headerColour;
 }
 
 ul {
@@ -206,13 +258,16 @@ ul {
 }
 
 li {
-	border: 5px solid $buttonColour;
+	border: 5px solid $headerColour;
 	border-radius: 5px;
 	padding: 20px;
 	width: calc(25% - 15px);
 	background: rgba(255,255,255,0.9);
 	margin-right: 20px;
 	margin-bottom: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 	
 	h2, p {
 		color: $headerColour;
@@ -245,6 +300,11 @@ li {
 .buttonContainer {
 	display: flex;
 	justify-content: space-around;
+
+	button.joined {
+		background: grey;
+		color: lightgrey;
+	}
 }
 
 footer {
