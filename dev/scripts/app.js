@@ -198,6 +198,7 @@ class App extends React.Component {
 								<Route exact path="/PickupGames/" component={Main}></Route>
 								{this.state.user ?
 									<div>
+										{this.componentWillMount}
 									<Route path="/PickupGames/host" render={(props) => (
 										<Host 
 											handleSubmit={this.handleSubmit} 

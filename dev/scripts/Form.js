@@ -24,7 +24,7 @@ const Form = (props) => {
 				<div className="middleLine">
 					<div className="formBox">
 						<label htmlFor="eventCap">Max No. of Players</label>
-						<input type="number" name="eventCap" id="eventCap" onChange={props.handleChange} value={props.state.eventCap}/>
+						<input required type="number" name="eventCap" id="eventCap" onChange={props.handleChange} value={props.state.eventCap}/>
 					</div>
 					<div className="radioContainer">
 						<div className="radioBox">

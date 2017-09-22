@@ -9,7 +9,7 @@ const Main = () => {
 			<p><em>- Or - </em></p>
 			<p>Wnted to just start a game of pickup but can't find others to join you.</p>
 			<p>Pickup Games is here to help you on both fronts!</p>
-			<p>To get started, log in and click either the "Host" or "Browse" buttons in the sidebar</p>
+			<p>To get started, log in and click either the "Host" or "Browse" buttons in the top right corner.</p>
 		</div>
 	)
 }

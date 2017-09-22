@@ -105,6 +105,34 @@
 			margin-top: 0;
 		}
 	}
+
+	.middleLine {
+		flex-direction: column;
+	}
+
+	#eventCap {
+		margin-right: 0;
+		width: 100%;
+	}
+
+	.formBox {
+		label {
+			margin-top: 15px;
+		}
+	}
+
+	.gameContainer {
+		flex-direction: column;
+
+		label {
+			margin-right: 0;
+			width: 100%
+		}
+	}
+
+	#gameName {
+		width: 100%;
+	}
 }
 
 @media (max-width: 480px){

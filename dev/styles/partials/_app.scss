@@ -17,7 +17,7 @@ header {
 }
 
 #hamburger {
-	width: 60px;
+	width: 45px;
 	height: 45px;
 	transform: rotate(0deg);
 	cursor: pointer;
@@ -53,7 +53,7 @@ header {
 
 	&.open span:first-child{
 		transform: rotate(45deg);
-		top: -3px;
+		top: 2px;
 		left: 8px;
 	}
 
@@ -64,7 +64,7 @@ header {
 
 	&.open span:last-child{
 		transform: rotate(-45deg);
-		top: 39px;
+		top: 34px;
 		left: 8px;
 	}
 }
@@ -82,6 +82,10 @@ header {
 	}
 	h1 {
 		margin-bottom: 20px;
+	}
+
+	p {
+		font-size: 1.2rem;
 	}
 
 	p:nth-child(4){
@@ -153,7 +157,6 @@ header {
 }
 
 main {
-	
 	min-width: 480px;
 	width: 100%;
 	padding: 100px;
